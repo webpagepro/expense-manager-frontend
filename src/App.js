@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import canvas from './canvas.png';
+import Search from './components/Search.js';
+import Header from './components/Header.js';
+import Footer from './components/Footer';
 import './App.css';
 import ReactChartkick, { LineChart, PieChart } from 'react-chartkick'
 import Chart from 'chart.js';
 import axios from 'axios';
+import { Container, Row, Col, Card } from 'reactstrap';
+
 //import Charts from './components/Charts'
 
 class App extends Component {
 
   async componentDidMount() {
-    const response = await fetch('http://localhost:8005/')
+    const response = await fetch('http://localhost:8082/')
     const json = await response.json()
      if(!response)
      {
@@ -40,15 +45,25 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App"><div className="main-title">Expense Tracker</div>
+      <div className="App">
+      <Container>
+     <Header/>
+     <Search className="search" filterCameraSearch={this.filterCameraSearch} />
+    <div className="main-title">Welcome Samuel</div>
         <header className="App-header">
           <img src={canvas} className="App-logo" alt="logo" />
           
          <div className="chartOne" chart_one = {ReactChartkick.addAdapter(Chart)} />
         </header>
-      </div>
-    );
-  }
+  
+    <Footer copy="2019"/>
+    </Container>
+</div>
+
+) 
+   
+
+}
 }
 
 export default App;
