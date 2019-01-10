@@ -22,7 +22,7 @@ class Search extends Component {
                         <Input
                           type="text"
                           onChange={(e) => this.search(e.target.value)}
-                          placeholder="Search by title or camera"
+                          placeholder="Search by expense"
                           value={query}
                         />
                     </div>
