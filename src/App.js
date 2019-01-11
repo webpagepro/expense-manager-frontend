@@ -44,7 +44,7 @@ class App extends Component {
   }
  
   addExpenseToDebtList = id => {
-    axios.patch(`http://localhost:8082/api/expenses/debt/add/${id}`)
+    axios.patch(`http://localhost:8006/api/expenses/add/${id}`)
     .then(res => {
       let otherExpenses = this.state.expenses
     this.setState({ expenses: [...otherExpenses.filter(expense => expense.id !== id), res.data]})
@@ -53,7 +53,7 @@ class App extends Component {
   }
 
   removeExpenseFromDebtList = id => {
-    axios.patch(`http://localhost:8082/api/expenses/debt/remove/${id}`)
+    axios.patch(`http://localhost:8006/api/expenses/remove/${id}`)
     .then(res => {
       let otherExpenses = this.state.expenses
     this.setState({ Expenses: [...otherExpenses.filter(expense => expense.id !== id), res.data]})
