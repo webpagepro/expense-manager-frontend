@@ -1,11 +1,10 @@
-var React = require('react');
+import React, { Component } from 'react';
 var Component = React.Component;
-var CanvasJSReact = require('./canvasjs.react');
+var CanvasJSReact = require('./canvasjs.react.js');
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
- 
 class Charts extends Component {	
-	render() {
+	render() { console.log("this.props.expenses: ", this.props.expenses)
 		const options = {
 			animationEnabled: true,
 			exportEnabled: true,
@@ -29,6 +28,7 @@ class Charts extends Component {
 		}
 		return   (
           //  return this.props.id ?(
+			 
           
 		<div>
 			<CanvasJSChart options = {options} 

@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
-import ExpensesBasket from './ExpensesBasket';
+import Expense from './Expense';
 
   
 
 class ExpensesList extends Component {
   state={
     
-    ExpensesInCart: []
+    expensesInBasket: []
  } 
 
     render(){
-      let cartedExpenses = this.props.Expenses.map(expense => {
-     return <ExpensesBasket key={expense.id} expense={expense} addexpenseToCart={this.props.addexpenseToCart} />
+      let storedExpenses = this.props.expenses.map(expense => {
+     return <Expense key={expense.id} expense={expense} addExpenseToDebtList={this.props.addExpenseToDebtList} />
       })
                           
                            
-                           console.log("expenseList; ", this.cartedExpenses)
+                           console.log("ExpenseList; ", this.storedExpenses)
 
           
                   return (
                             <div>
-                           {cartedExpenses} 
+                           {storedExpenses} 
                               </div>                                         
              
                   )

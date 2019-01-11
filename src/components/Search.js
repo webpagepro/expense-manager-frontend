@@ -3,22 +3,22 @@ import {Input} from 'reactstrap'
 class Search extends Component {
     state = {
         query: '',
-        cameras: []
+        expenses: []
     }
 
 
 
     render() {
-        const { query, cameras } = this.state
+        const { query, expenses } = this.state
 
         return (
-            <div className="search-cameras">
-                <div className="search-cameras-bar">
+            <div className="search-expenses">
+                <div className="search-expenses-bar">
                     <div
                         className="close-search"
                         to='/'>
                     </div>
-                    <div className="search-cameras-input-wrapper">
+                    <div className="search-expenses-input-wrapper">
                         <Input
                           type="text"
                           onChange={(e) => this.search(e.target.value)}
@@ -27,12 +27,12 @@ class Search extends Component {
                         />
                     </div>
                 </div>
-                <div className="search-cameras-results">
-                    <ol className="cameras-grid">
-                      {cameras.map((camera) => (
+                <div className="search-expenses-results">
+                    <ol className="expenses-grid">
+                      {expenses.map((expense) => (
                         <li>
                           <div>
-                             <p>{camera.name}</p>
+                             <p>{expense.expense_name}</p>
                           
                           </div>
                         </li>

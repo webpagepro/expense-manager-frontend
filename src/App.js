@@ -4,17 +4,34 @@ import Search from './components/Search.js';
 import Header from './components/Header.js';
 import Footer from './components/Footer';
 import './App.css';
-import ReactChartkick, { LineChart, PieChart } from 'react-chartkick'
-import Chart from 'chart.js';
+import TopNavBar from './components/TopNavBar';
+//import ReactChartkick, { LineChart, PieChart } from 'react-chartkick'
+//import Chart from 'chart.js'
 import axios from 'axios';
 import { Container, Row, Col, Card } from 'reactstrap';
-
+//import ExpensesList from './components/ExpensesList'
 //import Charts from './components/Charts'
+import Spender from './components/Spender';
+import {
+  BrowserRouter as Router,
+  Route, Switch
+} from 'react-router-dom'
+import RegisterContainer from './components/RegisterContainer';
 
 class App extends Component {
+ 
+  _apiLogin=(spender)=>{
+    fetch('http://localhost:8006/spenders/login')
+    .then(res => res.json())
+    .then(spender => console.log(spender))
+  }
+  
+  state = {
+    expenses: []
+  }
 
   async componentDidMount() {
-    const response = await fetch('http://localhost:8082/')
+    const response = await fetch('http://localhost:8082/api/expenses')
     const json = await response.json()
      if(!response)
      {
@@ -23,9 +40,9 @@ class App extends Component {
       console.log("async: ", this)
       this.setState({expenses: json}) 
   }
-  
-  addExpenseToBasket = id => {
-    axios.patch(`http://localhost:8005/api/expenses/${id}/add`)
+ 
+  addExpenseToDebtList = id => {
+    axios.patch(`http://localhost:8082/api/expenses/debt/add//${id}`)
     .then(res => {
       let otherExpenses = this.state.Expenses
     this.setState({ expenses: [...otherExpenses.filter(expense => expense.id !== id), res.data]})
@@ -33,37 +50,44 @@ class App extends Component {
     })
   }
 
-  removeExpenseFromBasket = id => {
-    axios.patch(`http://localhost:8005/api/expenses/${id}/remove`)
+  removeExpenseFromDebtList = id => {
+    axios.patch(`http://localhost:8082/api/expenses/debt/remove/${id}`)
     .then(res => {
       let otherExpenses = this.state.Expenses
     this.setState({ Expenses: [...otherExpenses.filter(expense => expense.id !== id), res.data]})
-  console.log("App.js - removeExpenseFromBasket: ", res.data)
+  console.log("App.js - removeExpenseFromDebt: ", res.data)
     })
   }
 
 
   render() {
     return (
+<Router>
+      <div className="App">
+      <TopNavBar/>
+      <Switch>
+      <Route path='/' render={props => (
+        <Spender apiLogin={this._apiLogin} {...props}/>
+ 
+      )}/>
+        <Route exact path='/' component={Search} />
+        <Route path='/register' component={RegisterContainer} />
+
+      </Switch>
+
+    
       <div className="App">
       <Container>
-     <Header/>
-     <Search className="search" filterCameraSearch={this.filterCameraSearch} />
-    <div className="main-title">Welcome Samuel</div>
-        <header className="App-header">
-          <img src={canvas} className="App-logo" alt="logo" />
-          
-         <div className="chartOne" chart_one = {ReactChartkick.addAdapter(Chart)} />
-        </header>
-  
+     <Header/> 
+     <Row> <img src={canvas} alt="fuck off"/></Row>
     <Footer copy="2019"/>
     </Container>
+    </div>
 </div>
+</Router>
+    )
+    }
 
-) 
-   
-
-}
 }
 
 export default App;
