@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Expense from './Expense';
+import Charts from './Charts'
 
   
 
@@ -11,7 +12,7 @@ class ExpensesList extends Component {
 
     render(){
       let storedExpenses = this.props.expenses.map(expense => {
-     return <Expense key={expense.id} expense={expense} addExpenseToDebtList={this.props.addExpenseToDebtList} />
+     return <Expense key={expense.id} expense={expense} removeExpenseFromDebtList={this.props.removeExpenseFromDebtList} />
       })
                           
                            
@@ -20,7 +21,9 @@ class ExpensesList extends Component {
           
                   return (
                             <div>
+    <Charts expenses={this.props.expenses} />
                            {storedExpenses} 
+
                               </div>                                         
              
                   )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import canvas from './canvas.png';
+//import canvas from './canvas.png';
 import Search from './components/Search.js';
 import Header from './components/Header.js';
 import Footer from './components/Footer';
@@ -80,10 +80,10 @@ class App extends Component {
 
       </Switch>
 
-      <Row> <img src={canvas} alt="React is Retarded"/></Row>
+      <Row> </Row>
      
     
-     <Route path='/expenses'  component={ExpensesList}/>
+     <Route path='/expenses'  render={alias => <ExpensesList expenses={this.state.expenses} removeExpenseFromDebtList={this.removeExpenseFromDebtList} {...alias} />} /> 
     <Footer copy="2019"/>
    </Container>
     </div>
