@@ -5,7 +5,7 @@ import {Pie} from 'react-chartjs-2';
 
 class  Charts extends React.Component{
 
-  render() {
+render() {
 console.log("Charts: ", this)
 	const data = {
 	labels: 
@@ -20,6 +20,7 @@ console.log("Charts: ", this)
 		'#FFCE56',
 		'#ccc',
 		'#333',
+		'#F38F64'
 		],
 		hoverBackgroundColor: [
 		'#FF6384',
