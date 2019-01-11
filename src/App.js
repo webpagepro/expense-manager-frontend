@@ -12,6 +12,7 @@ import { Container, Row, Col, Card } from 'reactstrap';
 //import Charts from './components/Charts';
 import Spender from './components/Spender';
 import Register from './components/Register';
+import ExpensesList from './components/ExpensesList'
 import {
   BrowserRouter as Router,
   Route, Switch
@@ -43,7 +44,7 @@ class App extends Component {
   }
  
   addExpenseToDebtList = id => {
-    axios.patch(`http://localhost:8082/api/expenses/debt/add//${id}`)
+    axios.patch(`http://localhost:8082/api/expenses/debt/add/${id}`)
     .then(res => {
       let otherExpenses = this.state.expenses
     this.setState({ expenses: [...otherExpenses.filter(expense => expense.id !== id), res.data]})
@@ -79,10 +80,10 @@ class App extends Component {
 
       </Switch>
 
-    
+      <Row> <img src={canvas} alt="React is Retarded"/></Row>
      
     
-     <Row> <img src={canvas} alt="React is Retarded"/></Row>
+     <Route path='/expenses'  component={ExpensesList}/>
     <Footer copy="2019"/>
    </Container>
     </div>

@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 
 import  { withRouter } from 'react-router-dom'
-import Expense from './Expense'
+import ExpenseList from './ExpenseList'
 
 class TopNavBar extends Component {
 
