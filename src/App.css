@@ -6,9 +6,9 @@
 
 }
 
-.App-header {
+.App {
   background-color: #fff;
-  min-height: 100vh;
+  min-height: 65vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,6 +19,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+form{
+ margin:20px;
 }
 
 .main-title{
@@ -36,3 +40,21 @@
   }
 }
 */
+
+.row img{
+  float:left; 
+  position:relative;
+  
+}
+
+@media (max-width: 990px){
+  .row img{
+    left:-300px;
+  }
+}
+
+@media (max-width: 5750px){
+  .row img{
+    left:0px;
+  }
+}
